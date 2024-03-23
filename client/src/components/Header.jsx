@@ -1,28 +1,32 @@
 import { Link } from "react-router-dom";
 
-function Header() {
+const Header = () => {
   return (
-    <div className="bg-sky-300">
-      <div className="flex justify-between items-center max-w-8xl mx-auto p-3 ">
-        <Link to="/">
-          <h1 className="font-bold cursor-pointer hover:text-white">
-            Auth App
-          </h1>
+    <header className="bg-zinc-300">
+      <div className="max-w-8xl mx-auto p-3 flex justify-between items-center">
+        <Link to="/" className="font-bold cursor-pointer hover:text-white">
+          Auth App
         </Link>
-        <ul className="flex gap-5">
-          <Link to="/Home">
-            <li className="hover:text-white">Home</li>
-          </Link>
-          <Link to="/about">
-            <li className="hover:text-white">About</li>
-          </Link>
-          <Link to="/SignIn">
-            <li className="hover:text-white">Sign In</li>
-          </Link>
-        </ul>
+        <nav>
+          <ul className="flex gap-5">
+            <NavItem to="/Home">Home</NavItem>
+            <NavItem to="/about">About</NavItem>
+            <NavItem to="/SignIn">Sign In</NavItem>
+          </ul>
+        </nav>
       </div>
-    </div>
+    </header>
   );
-}
+};
+
+const NavItem = ({ to, children }) => {
+  return (
+    <li>
+      <Link to={to} className="hover:text-white">
+        {children}
+      </Link>
+    </li>
+  );
+};
 
 export default Header;
