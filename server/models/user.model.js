@@ -22,6 +22,6 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
+userSchema.plugin(uniqueValidator, { message: "is already taken." });
 const User = mongoose.model("User", userSchema);
 export default User;
