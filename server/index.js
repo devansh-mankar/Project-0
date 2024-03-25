@@ -28,5 +28,17 @@ app.get("/", (req, res) => {
   res.json({ message: "hello there " });
 });
 
+//routes
 app.use("/server/user", userRoutes);
 app.use("/server/auth", authRoutes);
+
+//middleware
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    statusCode,
+  });
+});
