@@ -3,10 +3,21 @@ import uniqueValidator from "mongoose-unique-validator";
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    firstName: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    lastName: {
       type: String,
       required: true,
       unique: true,
+      index: true,
+    },
+    contactNo: {
+      type: String,
+      required: true,
+      unqiue: true,
       index: true,
     },
     email: {

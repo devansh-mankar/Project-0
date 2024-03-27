@@ -3,7 +3,7 @@ import Home from "./pages/home";
 import About from "./pages/About";
 import SignIn from "./pages/signIn";
 import Profile from "./pages/profile";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/signUp/SignUp";
 import Header from "./components/Header";
 
 export default function App() {
