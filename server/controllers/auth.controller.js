@@ -12,9 +12,11 @@ export const signup = async (req, res, next) => {
 
   const hashedContact = CryptoJS.SHA256(contactNo);
 
-  const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32 });
+  const hashedPassword = CryptoJS.HmacSHA1(password, salt, {
+    keySize: 512 / 32,
+  });
 
-  const hashedEmail = CryptoJS.HmacSHA512(email, "hash-it");
+  const hashedEmail = CryptoJS.SHA256(email);
 
   const newUser = new User({
     firstName: hashedFname,
