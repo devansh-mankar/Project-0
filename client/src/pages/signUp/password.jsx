@@ -1,6 +1,12 @@
 import { Input, Typography } from "@material-tailwind/react";
+import PropTypes from "prop-types";
 
-export default function Password() {
+export default function Password({ onChange }) {
+  const handleChanges = (e) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
   return (
     <div className="">
       <Input
@@ -8,6 +14,7 @@ export default function Password() {
         className=" shadow-sm border-2 outline-black relative bg-white-100 p-2 rounded"
         placeholder="********"
         type="password"
+        onChange={handleChanges}
       />
       <Typography
         variant="small"
@@ -31,3 +38,7 @@ export default function Password() {
     </div>
   );
 }
+
+Password.propTypes = {
+  onChange: PropTypes.func.isRequired, // onChange prop must be a function and is required
+};

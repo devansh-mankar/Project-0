@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.router.js";
+import bodyParser from "body-parser";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ mongoose
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, () => {
   console.log("Hemlo");
